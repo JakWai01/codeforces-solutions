@@ -1,0 +1,63 @@
+#include <algorithm>
+#include <array>
+#include <iostream>
+#include <map>
+#include <set>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    // n initial compilation errors, each of them pos integer
+    // n space seperated integers - the errors the compiler displayed for the first time
+    // n - 1 - errors displayed at second compilation
+    // n - 2 - errors displayed at third compilation (Has all from third except for exactly one)
+
+    // Print two numbers on a single line: the number of the compilation errors that disappeared
+    // after B made the first and the second correction, respectively
+    // first to second which one disappeared
+    // second to third which disappeared
+
+    int initialErrors;
+    cin >> initialErrors;
+    int first[initialErrors];
+    int second[initialErrors-1];
+    int third[initialErrors-2];
+    int sol1;
+    int sol2;
+
+    for (int i = 0; i < initialErrors; i++) {
+        cin >> first[i];
+    }
+    for (int i = 0; i < initialErrors-1; i++) {
+        cin >> second[i];
+    }
+    for(int i = 0; i < initialErrors-2; i++) {
+        cin >> third[i];
+    }
+    sort(first, first+initialErrors);
+    sort(second, second+initialErrors-1);
+    sort(third, third+initialErrors-2);
+
+    for (int i = 0; i < initialErrors; i++) {
+
+            if(first[i] != second[i]) {
+                sol1 = first[i];
+                break;
+            }
+
+    }
+    for (int i = 0; i < initialErrors-1; i++) {
+        if(second[i] != third[i]) {
+            sol2= second[i];
+            break;
+        }
+
+    }
+
+    cout << sol1 << " " << sol2 << endl;
+
+
+
+}
